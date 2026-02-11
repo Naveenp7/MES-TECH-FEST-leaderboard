@@ -545,219 +545,90 @@ body {
   transform: scale(0.9);
 }
 
-/* Mobile App-Like Optimization */
+/* Mobile Adjustments */
 @media (max-width: 1023px) {
-  body {
-    background: #000;
-    /* Darker bg for mobile */
-  }
-
   .app-container {
-    padding: 0;
-    min-height: 100vh;
-    display: block;
-    /* Remove flex column to allow scroll flow */
-  }
-
-  .background-gradient {
-    opacity: 0.5;
-    /* Reduce distraction on mobile */
-  }
-
-  /* Compact Sticky Header */
-  .left-panel {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(20px);
-    padding: 0.75rem 1rem 0.5rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .main-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-    width: 100%;
-  }
-
-  .logo-container {
-    margin: 0;
-    flex-direction: row;
-    gap: 0.25rem;
+    padding: 1rem;
   }
 
   .logo-glitch {
-    font-size: 1.25rem;
-    line-height: 1;
-    letter-spacing: -0.5px;
+    font-size: 3rem;
   }
 
   .main-header h1 {
-    display: none;
-    /* Hide 2026 on mobile */
+    font-size: 1rem;
+    letter-spacing: 2px;
   }
 
-  .live-indicator {
-    padding: 4px 8px;
-    font-size: 0.65rem;
-    border: none;
-    background: rgba(255, 0, 85, 0.2);
+  .layout-grid {
+    gap: 2rem;
   }
 
-  /* Compact Tabs - Segmented Control Style */
+  /* Tabs horizontal scroll/wrap */
   .tabs-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    flex-direction: row;
+    overflow-x: auto;
     padding-bottom: 0.5rem;
+    gap: 1rem;
+    -webkit-overflow-scrolling: touch;
+    /* smooth scroll */
   }
 
   .glass-tab-btn {
-    padding: 0.6rem;
-    min-width: 0;
-    border-radius: 12px;
-    justify-content: center;
-    background: transparent;
-    border: 1px solid transparent;
-    backdrop-filter: none;
-    gap: 0;
-  }
-
-  .glass-tab-btn.active {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Colored active indicators */
-  .glass-tab-btn.active:nth-child(1) {
-    border-bottom: 2px solid var(--neon-blue);
-    border-left: none;
-  }
-
-  .glass-tab-btn.active:nth-child(2) {
-    border-bottom: 2px solid var(--neon-pink);
-    border-left: none;
-  }
-
-  .tab-icon-bg,
-  .tab-subtitle {
-    display: none;
-    /* Hide icon and subtitle for compact view */
-  }
-
-  .tab-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-  }
-
-  /* Leaderboard List - Edge to Edge */
-  .layout-grid {
-    display: block;
-    gap: 0;
-    margin: 0;
-  }
-
-  .right-panel {
-    padding: 0;
-  }
-
-  .leaderboard-wrapper {
-    padding-bottom: 80px;
-    /* Space for fab */
-  }
-
-  .leaderboard-card {
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    backdrop-filter: none;
-  }
-
-  .leaderboard-card::after {
-    display: none;
-  }
-
-  /* Hide redundant header inside card */
-  .leaderboard-header {
-    display: none;
-  }
-
-  /* Sticky Table Header */
-  .table-header {
-    position: sticky;
-    top: 104px;
-    /* Approx height of header + tabs */
-    z-index: 90;
-    background: rgba(5, 5, 5, 0.95);
-    backdrop-filter: blur(10px);
-    margin: 0;
-    padding: 0.75rem 1rem;
-    grid-template-columns: 40px 1fr 70px 24px;
-    font-size: 0.7rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* List Items */
-  .score-item-container {
-    background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .score-item-container:hover {
-    background: rgba(255, 255, 255, 0.02);
-    transform: none;
-    box-shadow: none;
-  }
-
-  .score-row {
     padding: 1rem;
-    grid-template-columns: 40px 1fr 70px 24px;
+    min-width: 200px;
+    flex-shrink: 0;
+  }
+
+  .glass-tab-btn:hover {
+    transform: none;
+  }
+
+  /* Compact Leaderboard */
+  .leaderboard-card {
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  .leaderboard-header {
+    margin-bottom: 2rem;
+  }
+
+  .leaderboard-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .table-header,
+  .score-row {
+    grid-template-columns: 40px 1fr 80px 24px;
+    padding: 1rem;
     gap: 0.5rem;
-  }
-
-  .rank-number {
-    font-size: 0.9rem;
-  }
-
-  .player-name {
-    font-size: 0.95rem;
-    margin-bottom: 2px;
-  }
-
-  .game-mode-badge {
-    font-size: 0.6rem;
-    padding: 2px 6px;
   }
 
   .score-value {
     font-size: 1.1rem;
   }
 
-  /* Details */
-  .score-details {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
+  .player-name {
+    font-size: 1rem;
+  }
+
+  .rank-number {
+    font-size: 1rem;
   }
 
   .details-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
 
   .detail-item {
-    background: rgba(255, 255, 255, 0.02);
     padding: 0.75rem;
   }
 
@@ -765,19 +636,12 @@ body {
     font-size: 1rem;
   }
 
-  /* Hide Elements */
-  .qr-code-container,
-  .footer {
+  .qr-code-container {
     display: none !important;
   }
 
-  /* Show Share FAB */
   .share-fab {
     display: flex;
-    bottom: 2rem;
-    right: 1.5rem;
-    width: 50px;
-    height: 50px;
-    animation: slideUp 0.4s ease-out 0.5s backwards;
+    animation: slideUp 0.5s backwards 1s;
   }
 }
