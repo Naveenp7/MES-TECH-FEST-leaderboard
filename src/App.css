@@ -469,6 +469,82 @@ body {
   opacity: 1;
 }
 
+/* QR Code Widget (Desktop) */
+.qr-code-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(40px);
+  padding: 1rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.qr-wrapper {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Share FAB (Hidden by default, shown on mobile) */
+.share-fab {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--neon-blue);
+  color: black;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.share-fab:active {
+  transform: scale(0.9);
+}
+
 /* Mobile Adjustments */
 @media (max-width: 1023px) {
   .app-container {
@@ -498,13 +574,13 @@ body {
     /* smooth scroll */
   }
 
-  .tab-btn {
+  .glass-tab-btn {
     padding: 1rem;
     min-width: 200px;
     flex-shrink: 0;
   }
 
-  .tab-btn:hover {
+  .glass-tab-btn:hover {
     transform: none;
   }
 
@@ -561,61 +637,11 @@ body {
   }
 
   .qr-code-container {
-    display: none;
-  }
-}
-
-/* QR Code Widget */
-.qr-code-container {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: var(--card-bg);
-  /* Changed to use var(--card-bg) for glassmorphism */
-  backdrop-filter: blur(40px);
-  /* Added for glassmorphism */
-  padding: 1rem;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s backwards;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-}
-
-.qr-wrapper {
-  background: white;
-  padding: 0.5rem;
-  border-radius: 12px;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.qr-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
-  /* Changed to white for better contrast on dark glassmorphism */
-  font-weight: 800;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+    display: none !important;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .share-fab {
+    display: flex;
+    animation: slideUp 0.5s backwards 1s;
   }
 }

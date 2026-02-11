@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { handDb, dinoDb } from './firebase'
 import Leaderboard from './components/Leaderboard'
-import { Gamepad2, Ghost, MonitorPlay, Zap, QrCode } from 'lucide-react'
+import { Gamepad2, Ghost, MonitorPlay, Zap, QrCode, Share2 } from 'lucide-react'
 import QRCode from "react-qr-code"
 import './App.css'
 
@@ -12,6 +12,23 @@ function App() {
   useEffect(() => {
     setCurrentUrl(window.location.href)
   }, [])
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'MES Tech Fest 2026 Leaderboard',
+          text: 'Check out the live scores!',
+          url: currentUrl
+        })
+      } catch (err) {
+        console.log('Error sharing:', err)
+      }
+    } else {
+      navigator.clipboard.writeText(currentUrl)
+      alert('Link copied to clipboard!')
+    }
+  }
 
   return (
     <div className="app-container">
@@ -106,6 +123,10 @@ function App() {
             <span>SCAN FOR LIVE SCORES</span>
           </div>
         </div>
+
+        <button className="share-fab" onClick={handleShare}>
+          <Share2 size={24} />
+        </button>
       </div>
 
       <footer className="footer">
